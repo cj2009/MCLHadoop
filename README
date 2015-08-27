@@ -1,0 +1,5 @@
+Please read the files in the 'new_instructions' to compile the program.
+
+The included mcl-3000.jar file is a pre-compiled version of our latest MCL Hadoop program with the submatrix size set to 3000.
+
+The included jblas.jar is a copy of the latest version of JBLAS (1.2.4), as of July 2015.

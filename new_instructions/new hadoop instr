@@ -1,0 +1,19 @@
+Modify the classpath variable in the hadoop-env.sh file so that Hadoop will compile the .java file properly and recognize classes from the JBLAS library.
+I had it like this:
+export HADOOP_CLASSPATH=/usr/lib/jvm/java-7-openjdk-amd64/lib/tools.jar:/path/to/jblas.jar
+
+
+In the HDFS file system, I have a folder in which I placed a copy of the JBLAS jar file. Inside the MCL class, I have the path to this jar file hard-coded using these lines of code:
+                // Set the external JBLAS jar:
+                Path pfad = new Path("ClassFiles/jblas.jar");
+                job2.addCacheFile(pfad.toUri());
+
+If Hadoop can't find and load this jar from HDFS while running, the job will fail.
+
+Although the Tool interface has been implemented, the program can still be run as usual:
+hadoop jar fatjar.jar MCL in out/out 1 4039 64 15 2.0
+
+
+If the libjars option is needed for some reason:
+export LIBJARS=/path/to/external/jar.jar
+hadoop jar /path/to/my.jar MyClass -libjars ${LIBJARS} [regular CL options]

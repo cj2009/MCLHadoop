@@ -1,0 +1,8 @@
+# To compile:
+export CLASSPATH=`yarn classpath`
+javac -classpath "$CLASSPATH:/path/to/jblas.jar" -d ./ /path/to/MCL.java
+
+
+# To package the files into a jar:
+jar cf mcl.jar ./*{class,jar}
+
